@@ -1,9 +1,25 @@
 apiVersion: v1
 entries:
+  codeserver:
+  - apiVersion: v2
+    appVersion: "202110"
+    created: "2021-10-19T07:08:03.073257596Z"
+    description: Inofficial helm chart for code-server
+    digest: 862386fe53e35b1a719c5caa5f9d0c8b8a1fbf7a9f5daa57d6336df2b12689c7
+    home: https://konkube.github.io/helm-charts/
+    maintainers:
+    - email: info.konkube@gmail.com
+      name: KonKube
+    name: codeserver
+    sources:
+    - https://github.com/KonKube/codeserver_chart
+    urls:
+    - https://konkube.github.io/helm-charts/codeserver-1.0.0.tgz
+    version: 1.0.0
   pihole:
   - apiVersion: v2
     appVersion: "2021.1"
-    created: "2021-10-19T07:00:56.844423534Z"
+    created: "2021-10-19T07:08:03.075234314Z"
     description: Inofficial helm chart for Pi-hole
     digest: 8bed4ac5f48d03a3234b41b01f0fd22ff56e80cd0e491fa3a1f4ea5c8d1745d5
     home: https://konkube.github.io/helm-charts/
@@ -16,4 +32,4 @@ entries:
     urls:
     - https://konkube.github.io/helm-charts/pihole-1.0.0.tgz
     version: 1.0.0
-generated: "2021-10-19T07:00:56.843184533Z"
+generated: "2021-10-19T07:08:03.071819082Z"
