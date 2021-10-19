@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Helm 3
+        run: curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+      
+      - name: Provide SSH private key
+        env: 
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_KEY }}"
+          helm repo index . --url https://konkube.github.io/helm-charts/
+          git add index.yaml
+          git config user.name github-konkube-actions
+          git config user.email info.konkube@gmail.com
+          git add $CHART-$VERSION.tgz
+          git commit -m "Updated index.yaml $(date +%Y%m%d)"
+          git push
+          
