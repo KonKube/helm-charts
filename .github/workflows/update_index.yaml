@@ -25,10 +25,9 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SSH_KEY }}"
           helm repo index . --url https://konkube.github.io/helm-charts/
-          git add index.yaml
           git config user.name github-konkube-actions
           git config user.email info.konkube@gmail.com
-          git add $CHART-$VERSION.tgz
+          git add index.yaml
           git commit -m "Updated index.yaml $(date +%Y%m%d)"
           git push
           
